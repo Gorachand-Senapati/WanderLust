@@ -38,7 +38,7 @@ main().then(() => {
     console.log(err);
 })
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(dbUrl);//MONGO_URL(test)
 }
 
 //ejs ke require kora hoche 
@@ -64,8 +64,10 @@ const store = MongoStore.create({
 store.on("error", () => {
   console.log("Error in MONGO SESSION STORE",err)
 })
+
 const sessionOptions = {
   store,
+  //when test then store comment
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true ,
